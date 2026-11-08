@@ -1,25 +1,26 @@
 name: PDL Aspect Change Report
 
-on:
-  schedule:
-    # Daily at 06:00 UTC. Runs against acryl-main with auto-resolved baseline.
-    - cron: "0 6 * * *"
-  workflow_dispatch:
-    inputs:
-      base:
-        description: "Base ref (tag/branch/commit). Leave blank to auto-resolve the latest stable -cloud release tag in the repo (falls back to latest -cloud tag if no stable release exists yet). Independent of --head ancestry."
-        required: false
-        default: ""
-      head:
-        description: "Head ref (tag/branch/commit). Leave blank to default to acryl-main."
-        required: false
-        default: ""
-      per_pr:
-        description: "Per-PR audit mode: classify every PDL-touching commit in base..head in isolation, then aggregate. Catches per-PR `bump_spurious` cases that wide cumulative windows mask. Slower (~10–60s)."
-        required: false
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Daily at 06:00 UTC. Runs against acryl-main with auto-resolved baseline.
+#     - cron: "0 6 * * *"
+#   workflow_dispatch:
+#     inputs:
+#       base:
+#         description: "Base ref (tag/branch/commit). Leave blank to auto-resolve the latest stable -cloud release tag in the repo (falls back to latest -cloud tag if no stable release exists yet). Independent of --head ancestry."
+#         required: false
+#         default: ""
+#       head:
+#         description: "Head ref (tag/branch/commit). Leave blank to default to acryl-main."
+#         required: false
+#         default: ""
+#       per_pr:
+#         description: "Per-PR audit mode: classify every PDL-touching commit in base..head in isolation, then aggregate. Catches per-PR `bump_spurious` cases that wide cumulative windows mask. Slower (~10–60s)."
+#         required: false
+#         type: boolean
+#         default: false
+# 
 permissions:
   contents: read
 

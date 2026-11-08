@@ -3,10 +3,11 @@ name: Vercel Preview Cleanup
 # Deletes the Vercel preview deployments tied to a PR's head branch when the PR
 # is closed or merged, so stale previews (and their aliases/DNS) don't linger.
 
-on:
-  pull_request:
-    types: [closed]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     types: [closed]
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: false

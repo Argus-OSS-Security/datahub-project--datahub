@@ -5,26 +5,27 @@ run-name: "Cut tag on ${{ github.ref_name }}${{ inputs.hotfix_version != '' && f
 # branch_type and version are inferred from the branch this workflow is run on
 # (releases/v{version} or hotfixes/v{version}), so they are no longer inputs.
 # Run this workflow directly from the release or hotfix branch.
-on:
-  workflow_dispatch:
-    inputs:
-      release_type:
-        description: "rc or final. 'rc' auto-computes the next RC number."
-        required: true
-        type: choice
-        options:
-          - rc
-          - final
-      hotfix_version:
-        description: "Tag version for hotfix (e.g. 1.0.1). Required when running on a hotfixes/v{version} branch."
-        required: false
-        default: ""
-      skip_hotfix_sync_check:
-        description: "Skip the hotfix sync check. Use only when squash merge has been verified manually."
-        required: false
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       release_type:
+#         description: "rc or final. 'rc' auto-computes the next RC number."
+#         required: true
+#         type: choice
+#         options:
+#           - rc
+#           - final
+#       hotfix_version:
+#         description: "Tag version for hotfix (e.g. 1.0.1). Required when running on a hotfixes/v{version} branch."
+#         required: false
+#         default: ""
+#       skip_hotfix_sync_check:
+#         description: "Skip the hotfix sync check. Use only when squash merge has been verified manually."
+#         required: false
+#         type: boolean
+#         default: false
+# 
 permissions: {}
 
 # Scoped per branch so two RC cuts for the same version cannot race,

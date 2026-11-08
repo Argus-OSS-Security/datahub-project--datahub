@@ -1,29 +1,30 @@
 name: spark smoke test
-on:
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  push:
-    branches:
-      - master
-      - releases/**
-    paths:
-      # Run only when the Spark plugin or what it builds on changes.
-      - "metadata-integration/java/acryl-spark-lineage/**" # the Spark listener/plugin
-      - "metadata-integration/java/openlineage-converter/**" # OpenLineage -> DataHub conversion
-      - "metadata-integration/java/datahub-client/**" # the DataHub emitter client it uses
-      - ".github/workflows/spark-smoke-test.yml"
-  pull_request:
-    branches:
-      - "**"
-    paths:
-      # Run only when the Spark plugin or what it builds on changes.
-      - "metadata-integration/java/acryl-spark-lineage/**" # the Spark listener/plugin
-      - "metadata-integration/java/openlineage-converter/**" # OpenLineage -> DataHub conversion
-      - "metadata-integration/java/datahub-client/**" # the DataHub emitter client it uses
-      - ".github/workflows/spark-smoke-test.yml"
-  release:
-    types: [published]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Allows you to run this workflow manually from the Actions tab
+#   workflow_dispatch:
+#   push:
+#     branches:
+#       - master
+#       - releases/**
+#     paths:
+#       # Run only when the Spark plugin or what it builds on changes.
+#       - "metadata-integration/java/acryl-spark-lineage/**" # the Spark listener/plugin
+#       - "metadata-integration/java/openlineage-converter/**" # OpenLineage -> DataHub conversion
+#       - "metadata-integration/java/datahub-client/**" # the DataHub emitter client it uses
+#       - ".github/workflows/spark-smoke-test.yml"
+#   pull_request:
+#     branches:
+#       - "**"
+#     paths:
+#       # Run only when the Spark plugin or what it builds on changes.
+#       - "metadata-integration/java/acryl-spark-lineage/**" # the Spark listener/plugin
+#       - "metadata-integration/java/openlineage-converter/**" # OpenLineage -> DataHub conversion
+#       - "metadata-integration/java/datahub-client/**" # the DataHub emitter client it uses
+#       - ".github/workflows/spark-smoke-test.yml"
+#   release:
+#     types: [published]
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true

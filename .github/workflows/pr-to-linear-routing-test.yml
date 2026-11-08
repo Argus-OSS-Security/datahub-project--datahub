@@ -12,12 +12,13 @@ name: PR & Issue Routing (Linear Shadow Mode)
 #   ANTHROPIC_KEY_FOR_ROUTING - Anthropic API key
 #   INGESTION_LINEAR_KEY      - Linear API key (only needed when ticket creation is enabled)
 
-on:
-  pull_request_target:
-    types: [opened, reopened, ready_for_review, closed]
-  issues:
-    types: [opened, reopened, closed]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request_target:
+#     types: [opened, reopened, ready_for_review, closed]
+#   issues:
+#     types: [opened, reopened, closed]
+# 
 env:
   LINEAR_TEAM_CONFIG: |
     [

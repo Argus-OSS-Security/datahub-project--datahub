@@ -1,26 +1,27 @@
 name: Quickstart Test
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "2 0 * * *"
-  push:
-    branches:
-      - master
-    paths:
-      - "metadata-ingestion/src/datahub/cli/docker_cli.py"
-      - "metadata-ingestion/src/datahub/cli/docker_check.py"
-      - "metadata-ingestion/src/datahub/cli/quickstart_versioning.py"
-      - ".github/workflows/quickstart-test.yml"
-      - "docker/quickstart/*"
-  pull_request:
-    paths:
-      - "metadata-ingestion/src/datahub/cli/docker_cli.py"
-      - "metadata-ingestion/src/datahub/cli/docker_check.py"
-      - "metadata-ingestion/src/datahub/cli/quickstart_versioning.py"
-      - ".github/workflows/quickstart-test.yml"
-      - "docker/quickstart/*"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     - cron: "2 0 * * *"
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - "metadata-ingestion/src/datahub/cli/docker_cli.py"
+#       - "metadata-ingestion/src/datahub/cli/docker_check.py"
+#       - "metadata-ingestion/src/datahub/cli/quickstart_versioning.py"
+#       - ".github/workflows/quickstart-test.yml"
+#       - "docker/quickstart/*"
+#   pull_request:
+#     paths:
+#       - "metadata-ingestion/src/datahub/cli/docker_cli.py"
+#       - "metadata-ingestion/src/datahub/cli/docker_check.py"
+#       - "metadata-ingestion/src/datahub/cli/quickstart_versioning.py"
+#       - ".github/workflows/quickstart-test.yml"
+#       - "docker/quickstart/*"
+# 
 jobs:
   test-quickstart-pr:
     name: Quickstart Smoke Tests

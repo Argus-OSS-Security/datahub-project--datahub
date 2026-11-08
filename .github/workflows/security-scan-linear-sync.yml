@@ -2,70 +2,71 @@
 
 name: Security scan and Linear sync
 
-on:
-  workflow_dispatch:
-    inputs:
-      docker_tag:
-        description: "Image tag in the container registry to pull/scan. Default is `quickstart` (coordinated compose tag after smoke tests on master). Examples: quickstart, sha-abc1234, or a release tag."
-        required: true
-        type: string
-        default: quickstart
-      scan_profile:
-        description: "Profile key (see `.github/security-scan-profiles.*.json`)."
-        required: true
-        type: choice
-        default: allImages
-        options:
-          - allImages
-          - javaImages
-          - actionsImages
-          - executorImages
-          - integrationImages
-      variant_scope:
-        description: "Tag variants to scan: base only (`primary`), all profile suffixes (`all`), or `slim` / `locked`."
-        required: true
-        type: choice
-        default: all
-        options:
-          - primary
-          - all
-          - slim
-          - locked
-      scan_severity_levels:
-        description: "Scanner severity levels. Default is critical+high; optional includes medium."
-        required: true
-        type: choice
-        default: CRITICAL,HIGH
-        options:
-          - CRITICAL,HIGH
-          - CRITICAL,HIGH,MEDIUM
-      scan_with_trivy:
-        description: "Run Trivy"
-        required: true
-        type: boolean
-        default: true
-      scan_with_grype:
-        description: "Run Grype"
-        required: true
-        type: boolean
-        default: true
-      upload_trivy_to_github:
-        description: "Upload Trivy SARIF results to the GitHub Security tab"
-        required: true
-        type: boolean
-        default: false
-      scan_artifact_retention_days:
-        description: "Retention (days) for raw scan result artifacts."
-        required: true
-        type: number
-        default: 5
-
-  workflow_run:
-    workflows:
-      - Nightly Docker Test
-    types:
-      - completed
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       docker_tag:
+#         description: "Image tag in the container registry to pull/scan. Default is `quickstart` (coordinated compose tag after smoke tests on master). Examples: quickstart, sha-abc1234, or a release tag."
+#         required: true
+#         type: string
+#         default: quickstart
+#       scan_profile:
+#         description: "Profile key (see `.github/security-scan-profiles.*.json`)."
+#         required: true
+#         type: choice
+#         default: allImages
+#         options:
+#           - allImages
+#           - javaImages
+#           - actionsImages
+#           - executorImages
+#           - integrationImages
+#       variant_scope:
+#         description: "Tag variants to scan: base only (`primary`), all profile suffixes (`all`), or `slim` / `locked`."
+#         required: true
+#         type: choice
+#         default: all
+#         options:
+#           - primary
+#           - all
+#           - slim
+#           - locked
+#       scan_severity_levels:
+#         description: "Scanner severity levels. Default is critical+high; optional includes medium."
+#         required: true
+#         type: choice
+#         default: CRITICAL,HIGH
+#         options:
+#           - CRITICAL,HIGH
+#           - CRITICAL,HIGH,MEDIUM
+#       scan_with_trivy:
+#         description: "Run Trivy"
+#         required: true
+#         type: boolean
+#         default: true
+#       scan_with_grype:
+#         description: "Run Grype"
+#         required: true
+#         type: boolean
+#         default: true
+#       upload_trivy_to_github:
+#         description: "Upload Trivy SARIF results to the GitHub Security tab"
+#         required: true
+#         type: boolean
+#         default: false
+#       scan_artifact_retention_days:
+#         description: "Retention (days) for raw scan result artifacts."
+#         required: true
+#         type: number
+#         default: 5
+# 
+#   workflow_run:
+#     workflows:
+#       - Nightly Docker Test
+#     types:
+#       - completed
+# 
 permissions:
   actions: write
   contents: read

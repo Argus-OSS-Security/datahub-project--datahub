@@ -1,71 +1,72 @@
 name: Docker Build, Scan, Test
-on:
-  workflow_dispatch:
-    inputs:
-      profileName:
-        description: "Profile name for the smoke-test. Defaults to quickstart-consumers if not specified"
-        required: false
-        default: "quickstart-consumers"
-        type: string
-      playwright_shard_count:
-        description: "Number of parallel shards for Playwright E2E tests"
-        required: false
-        default: "5"
-        type: string
-      embedding_model:
-        description: "Ollama embedding model for the AI smoke test (local embeddings)"
-        required: false
-        default: "nomic-embed-text"
-        type: string
-  push:
-    branches:
-      - master
-      - releases/**
-    paths:
-      - "**"
-      - "!docs/**"
-      - "!**.md"
-      - "!.github/**"
-      - ".github/workflows/docker-unified.yml"
-      - ".github/scripts/send_failed_tests_to_posthog.py"
-      - ".github/scripts/docker_helpers.sh"
-      - ".github/scripts/resolve_image_builds.sh"
-      - ".github/scripts/test_resolve_image_builds.sh"
-      - ".github/workflows/resusable-playwright-tests.yml"
-      - ".github/actions/ci-optimization"
-      - ".github/actions/restore-dependency-caches"
-      - ".github/actions/configure-fast-apt-mirror"
-      - ".github/scripts/check_python_package.py"
-      - ".github/scripts/parse_failed_pytest_tests.py"
-      - ".github/scripts/docker_logs.sh"
-      - ".github/actions/smoke-test-retry"
-      - ".github/actions/report-test-results/**"
-  pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - "**"
-    paths:
-      - "**"
-      - "!docs/**"
-      - "!**.md"
-      - "!.github/**"
-      - ".github/workflows/docker-unified.yml"
-      - ".github/scripts/send_failed_tests_to_posthog.py"
-      - ".github/scripts/docker_helpers.sh"
-      - ".github/scripts/resolve_image_builds.sh"
-      - ".github/scripts/test_resolve_image_builds.sh"
-      - ".github/workflows/resusable-playwright-tests.yml"
-      - ".github/actions/ci-optimization"
-      - ".github/actions/restore-dependency-caches"
-      - ".github/actions/configure-fast-apt-mirror"
-      - ".github/scripts/check_python_package.py"
-      - ".github/scripts/parse_failed_pytest_tests.py"
-      - ".github/scripts/docker_logs.sh"
-      - ".github/actions/smoke-test-retry"
-      - ".github/actions/report-test-results/**"
-  release:
-    types: [published]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       profileName:
+#         description: "Profile name for the smoke-test. Defaults to quickstart-consumers if not specified"
+#         required: false
+#         default: "quickstart-consumers"
+#         type: string
+#       playwright_shard_count:
+#         description: "Number of parallel shards for Playwright E2E tests"
+#         required: false
+#         default: "5"
+#         type: string
+#       embedding_model:
+#         description: "Ollama embedding model for the AI smoke test (local embeddings)"
+#         required: false
+#         default: "nomic-embed-text"
+#         type: string
+#   push:
+#     branches:
+#       - master
+#       - releases/**
+#     paths:
+#       - "**"
+#       - "!docs/**"
+#       - "!**.md"
+#       - "!.github/**"
+#       - ".github/workflows/docker-unified.yml"
+#       - ".github/scripts/send_failed_tests_to_posthog.py"
+#       - ".github/scripts/docker_helpers.sh"
+#       - ".github/scripts/resolve_image_builds.sh"
+#       - ".github/scripts/test_resolve_image_builds.sh"
+#       - ".github/workflows/resusable-playwright-tests.yml"
+#       - ".github/actions/ci-optimization"
+#       - ".github/actions/restore-dependency-caches"
+#       - ".github/actions/configure-fast-apt-mirror"
+#       - ".github/scripts/check_python_package.py"
+#       - ".github/scripts/parse_failed_pytest_tests.py"
+#       - ".github/scripts/docker_logs.sh"
+#       - ".github/actions/smoke-test-retry"
+#       - ".github/actions/report-test-results/**"
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+#     branches:
+#       - "**"
+#     paths:
+#       - "**"
+#       - "!docs/**"
+#       - "!**.md"
+#       - "!.github/**"
+#       - ".github/workflows/docker-unified.yml"
+#       - ".github/scripts/send_failed_tests_to_posthog.py"
+#       - ".github/scripts/docker_helpers.sh"
+#       - ".github/scripts/resolve_image_builds.sh"
+#       - ".github/scripts/test_resolve_image_builds.sh"
+#       - ".github/workflows/resusable-playwright-tests.yml"
+#       - ".github/actions/ci-optimization"
+#       - ".github/actions/restore-dependency-caches"
+#       - ".github/actions/configure-fast-apt-mirror"
+#       - ".github/scripts/check_python_package.py"
+#       - ".github/scripts/parse_failed_pytest_tests.py"
+#       - ".github/scripts/docker_logs.sh"
+#       - ".github/actions/smoke-test-retry"
+#       - ".github/actions/report-test-results/**"
+#   release:
+#     types: [published]
+# 
 concurrency:
   # Using `github.run_id` (unique val) instead of `github.ref` here
   # because we don't want to cancel this workflow on master only for PRs

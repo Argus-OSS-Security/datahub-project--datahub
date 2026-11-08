@@ -1,13 +1,14 @@
 name: lint
-on:
-  # Only run on PRs. Assuming all commits come in via PRs, there is no need for lint post commit
-  pull_request:
-    # Run only on below branches
-    branches:
-      - master
-      - releases/**
-      - hotfixes/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Only run on PRs. Assuming all commits come in via PRs, there is no need for lint post commit
+#   pull_request:
+#     # Run only on below branches
+#     branches:
+#       - master
+#       - releases/**
+#       - hotfixes/**
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

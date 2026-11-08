@@ -2,25 +2,26 @@
 # Image tag defaults live in docker/postgres/build.gradle (datahubPostgresImageTag); align consumers when adopting.
 name: Publish datahub-postgres
 
-on:
-  workflow_dispatch:
-    inputs:
-      postgres_base_version:
-        description: "Upstream postgres image tag (FROM postgres:…), e.g. 17.5"
-        required: true
-        default: "17.5"
-        type: string
-      extensions_image_version:
-        description: "Extensions image revision N in published tag {base}-extensions-vN"
-        required: true
-        default: "1"
-        type: string
-      docker_registry:
-        description: "Registry namespace (e.g. acryldata)"
-        required: true
-        default: acryldata
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       postgres_base_version:
+#         description: "Upstream postgres image tag (FROM postgres:…), e.g. 17.5"
+#         required: true
+#         default: "17.5"
+#         type: string
+#       extensions_image_version:
+#         description: "Extensions image revision N in published tag {base}-extensions-vN"
+#         required: true
+#         default: "1"
+#         type: string
+#       docker_registry:
+#         description: "Registry namespace (e.g. acryldata)"
+#         required: true
+#         default: acryldata
+#         type: string
+# 
 concurrency:
   # Do not include workflow_dispatch inputs here — they are untrusted and must not be interpolated
   # into expressions that feed runner parsing beyond the documented safe fields.

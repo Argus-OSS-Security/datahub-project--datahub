@@ -1,14 +1,15 @@
 name: ingestion smoke
-on:
-  release:
-    types: [published]
-  push:
-    paths:
-      - "docker/datahub-ingestion-base/**"
-      - "smoke-test/**"
-      - ".github/workflows/docker-ingestion-smoke.yml"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   release:
+#     types: [published]
+#   push:
+#     paths:
+#       - "docker/datahub-ingestion-base/**"
+#       - "smoke-test/**"
+#       - ".github/workflows/docker-ingestion-smoke.yml"
+#   workflow_dispatch:
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

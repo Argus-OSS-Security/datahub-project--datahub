@@ -1,14 +1,15 @@
 name: check python dependencies
 
-on:
-  pull_request:
-    branches:
-      - "**"
-    paths:
-      - "**/requirements*.txt"
-      - "**/setup.py"
-      - "**/pyproject.toml"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     branches:
+#       - "**"
+#     paths:
+#       - "**/requirements*.txt"
+#       - "**/setup.py"
+#       - "**/pyproject.toml"
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

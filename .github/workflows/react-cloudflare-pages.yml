@@ -1,26 +1,27 @@
 name: Frontend Preview
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - "**"
-      - "!docs/**"
-      - "!**.md"
-      - "!.github/**"
-      - ".github/workflows/react-cloudflare-pages.yml"
-  pull_request:
-    branches:
-      - "**"
-    paths:
-      - "**"
-      - "!docs/**"
-      - "!**.md"
-      - "!.github/**"
-      - ".github/workflows/react-cloudflare-pages.yml"
-  release:
-    types: [published]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - "**"
+#       - "!docs/**"
+#       - "!**.md"
+#       - "!.github/**"
+#       - ".github/workflows/react-cloudflare-pages.yml"
+#   pull_request:
+#     branches:
+#       - "**"
+#     paths:
+#       - "**"
+#       - "!docs/**"
+#       - "!**.md"
+#       - "!.github/**"
+#       - ".github/workflows/react-cloudflare-pages.yml"
+#   release:
+#     types: [published]
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

@@ -1,8 +1,9 @@
 name: Reusable - Merge Playwright HTML report
 
-on:
-  workflow_call:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+# 
 jobs:
   playwright_report:
     name: Merge Playwright HTML report

@@ -1,29 +1,30 @@
 name: Playwright E2E Tests
 
-on:
-  workflow_dispatch:
-    inputs:
-      profileName:
-        description: "Profile name for quickstart. Defaults to quickstart-consumers if not specified"
-        required: false
-        default: "quickstart-consumers"
-        type: string
-      shard_count:
-        description: "Number of parallel shards for Playwright"
-        required: false
-        default: "5"
-        type: string
-      datahub_version:
-        description: "DataHub version to pull from registry. Defaults to 'quickstart' (latest pre-release)"
-        required: false
-        default: "quickstart"
-        type: string
-      workers_per_shard:
-        description: "EXPERIMENTAL: Playwright --workers per shard. Default 1 preserves existing behavior; >1 enables multiple worker processes that share one shard's stack and filesystem."
-        required: false
-        default: "1"
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       profileName:
+#         description: "Profile name for quickstart. Defaults to quickstart-consumers if not specified"
+#         required: false
+#         default: "quickstart-consumers"
+#         type: string
+#       shard_count:
+#         description: "Number of parallel shards for Playwright"
+#         required: false
+#         default: "5"
+#         type: string
+#       datahub_version:
+#         description: "DataHub version to pull from registry. Defaults to 'quickstart' (latest pre-release)"
+#         required: false
+#         default: "quickstart"
+#         type: string
+#       workers_per_shard:
+#         description: "EXPERIMENTAL: Playwright --workers per shard. Default 1 preserves existing behavior; >1 enables multiple worker processes that share one shard's stack and filesystem."
+#         required: false
+#         default: "1"
+#         type: string
+# 
 permissions:
   contents: read
 

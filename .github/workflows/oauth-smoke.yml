@@ -11,33 +11,34 @@ name: OAuth Smoke Test
 # released install (see run-oauth-ci.sh), so this job gates client-side auth
 # changes. Gating GMS auth changes would still require building PR images in
 # this job first.
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "17 3 * * *"
-  push:
-    branches:
-      - master
-    paths:
-      - "smoke-test/tests/oauth/**"
-      - ".github/workflows/oauth-smoke.yml"
-      - "metadata-ingestion/src/datahub/ingestion/auth/**"
-      - "metadata-ingestion/src/datahub/emitter/token_provider.py"
-      - "metadata-ingestion/src/datahub/emitter/rest_emitter.py"
-      - "metadata-ingestion/src/datahub/ingestion/sink/datahub_rest.py"
-      - "metadata-ingestion/src/datahub/cli/config_utils.py"
-      - "metadata-ingestion/src/datahub/upgrade/upgrade.py"
-  pull_request:
-    paths:
-      - "smoke-test/tests/oauth/**"
-      - ".github/workflows/oauth-smoke.yml"
-      - "metadata-ingestion/src/datahub/ingestion/auth/**"
-      - "metadata-ingestion/src/datahub/emitter/token_provider.py"
-      - "metadata-ingestion/src/datahub/emitter/rest_emitter.py"
-      - "metadata-ingestion/src/datahub/ingestion/sink/datahub_rest.py"
-      - "metadata-ingestion/src/datahub/cli/config_utils.py"
-      - "metadata-ingestion/src/datahub/upgrade/upgrade.py"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     - cron: "17 3 * * *"
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - "smoke-test/tests/oauth/**"
+#       - ".github/workflows/oauth-smoke.yml"
+#       - "metadata-ingestion/src/datahub/ingestion/auth/**"
+#       - "metadata-ingestion/src/datahub/emitter/token_provider.py"
+#       - "metadata-ingestion/src/datahub/emitter/rest_emitter.py"
+#       - "metadata-ingestion/src/datahub/ingestion/sink/datahub_rest.py"
+#       - "metadata-ingestion/src/datahub/cli/config_utils.py"
+#       - "metadata-ingestion/src/datahub/upgrade/upgrade.py"
+#   pull_request:
+#     paths:
+#       - "smoke-test/tests/oauth/**"
+#       - ".github/workflows/oauth-smoke.yml"
+#       - "metadata-ingestion/src/datahub/ingestion/auth/**"
+#       - "metadata-ingestion/src/datahub/emitter/token_provider.py"
+#       - "metadata-ingestion/src/datahub/emitter/rest_emitter.py"
+#       - "metadata-ingestion/src/datahub/ingestion/sink/datahub_rest.py"
+#       - "metadata-ingestion/src/datahub/cli/config_utils.py"
+#       - "metadata-ingestion/src/datahub/upgrade/upgrade.py"
+# 
 permissions:
   contents: read
 

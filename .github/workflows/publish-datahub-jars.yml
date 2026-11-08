@@ -1,21 +1,22 @@
 name: Publish Datahub Java Jars (Client, Spark Lineage, Protobuf, Auth API)
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - "**"
-      - "!docs/**"
-      - "!**.md"
-      - "!.github/**"
-      - ".github/workflows/publish-datahub-jars.yml"
-  release:
-    types: [published]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - "**"
+#       - "!docs/**"
+#       - "!**.md"
+#       - "!.github/**"
+#       - ".github/workflows/publish-datahub-jars.yml"
+#   release:
+#     types: [published]
+# 
+#   # Allows you to run this workflow manually from the Actions tab
+#   workflow_dispatch:
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true

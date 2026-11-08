@@ -1,26 +1,27 @@
 name: DataHub Actions
-on:
-  push:
-    branches:
-      - master
-      - releases/**
-    paths:
-      - ".github/workflows/actions.yml"
-      - "datahub-actions/**"
-      - "metadata-ingestion/**"
-      - "metadata-models/**"
-  pull_request:
-    branches:
-      - "**"
-    paths:
-      - ".github/workflows/actions.yml"
-      - "datahub-actions/**"
-      - "metadata-ingestion/**"
-      - "metadata-models/**"
-  release:
-    types: [published]
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#       - releases/**
+#     paths:
+#       - ".github/workflows/actions.yml"
+#       - "datahub-actions/**"
+#       - "metadata-ingestion/**"
+#       - "metadata-models/**"
+#   pull_request:
+#     branches:
+#       - "**"
+#     paths:
+#       - ".github/workflows/actions.yml"
+#       - "datahub-actions/**"
+#       - "metadata-ingestion/**"
+#       - "metadata-models/**"
+#   release:
+#     types: [published]
+#   workflow_dispatch:
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true

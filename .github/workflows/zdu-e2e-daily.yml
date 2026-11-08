@@ -7,11 +7,12 @@ name: ZDU E2E (daily)
 # pipeline. Production code stays clean — the fixtures only exist inside
 # the workflow's runtime.
 
-on:
-  schedule:
-    - cron: "0 6 * * *" # 06:00 UTC daily
-  workflow_dispatch: # also manually triggerable from the Actions tab
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "0 6 * * *" # 06:00 UTC daily
+#   workflow_dispatch: # also manually triggerable from the Actions tab
+# 
 concurrency:
   group: zdu-e2e-${{ github.ref }}
   cancel-in-progress: true

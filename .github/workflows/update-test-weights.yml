@@ -1,18 +1,19 @@
 name: Update Test Weights
 
-on:
-  schedule:
-    # Run every Monday at 9:00 AM IST (03:30 UTC)
-    - cron: "30 3 * * 1"
-
-  workflow_dispatch:
-    inputs:
-      run_count:
-        description: "Number of recent CI runs to analyze (default: 3)"
-        required: false
-        default: "3"
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run every Monday at 9:00 AM IST (03:30 UTC)
+#     - cron: "30 3 * * 1"
+# 
+#   workflow_dispatch:
+#     inputs:
+#       run_count:
+#         description: "Number of recent CI runs to analyze (default: 3)"
+#         required: false
+#         default: "3"
+#         type: string
+# 
 permissions:
   contents: write # To create branches and commits
   actions: read # To fetch workflow runs and artifacts

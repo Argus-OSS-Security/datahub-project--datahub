@@ -6,68 +6,69 @@ run-name: Post Workflow Actions for ${{ github.event_name == 'workflow_dispatch'
 # workflow names must be listed explicitly here.
 # This workflow is NOT listed, so it will not trigger itself (no recursion).
 # Listing workflows that run in PR and Post Commit to the list
-on:
-  workflow_run:
-    workflows:
-      - "Airflow Plugin"
-      - "build & test"
-      - "Check Datahub Jars"
-      - "check python dependencies"
-      - "CI Cache Warmup"
-      - "Dagster Plugin"
-      - "DataHub Actions"
-      - "DataHub Agent Context"
-      - "Docker Build, Scan, Test"
-      - "documentation"
-      - "Frontend Preview"
-      - "GX Plugin"
-      - "ingestion smoke"
-      - "lint"
-      - "Metadata Ingestion"
-      - "metadata model generate"
-      - "Metadata Models Custom CI"
-      - "metadata-io"
-      - "Nightly Docker Test"
-      - "OAuth Smoke Test"
-      - "PR Title Check"
-      - "Prefect Plugin"
-      - "Publish Datahub Java Jars (Client, Spark Lineage, Protobuf, Auth API)"
-      - "Python Build"
-      - "Python Tests for github scripts"
-      - "Quickstart Test"
-      - "Release Tests"
-      - "Release Validation"
-      - "spark smoke test"
-      - "Vercel Preview Cleanup"
-      - "Verify Quickstart Compose"
-    types:
-      - completed
-
-  # Allows manual triggering for ad-hoc testing against any existing workflow run.
-  # publish defaults to false so artifacts are not forwarded to downstream by accident.
-  workflow_dispatch:
-    inputs:
-      run_id:
-        description: "Workflow run ID to collect metrics for"
-        required: true
-        type: string
-      attempt:
-        description: "Run attempt number"
-        required: false
-        type: string
-        default: "1"
-      publish:
-        description: "Publish metrics artifacts downstream"
-        required: false
-        type: boolean
-        default: false
-      notify_slack:
-        description: "Send Slack failure notification (for testing; production
-          notifications fire automatically)"
-        required: false
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_run:
+#     workflows:
+#       - "Airflow Plugin"
+#       - "build & test"
+#       - "Check Datahub Jars"
+#       - "check python dependencies"
+#       - "CI Cache Warmup"
+#       - "Dagster Plugin"
+#       - "DataHub Actions"
+#       - "DataHub Agent Context"
+#       - "Docker Build, Scan, Test"
+#       - "documentation"
+#       - "Frontend Preview"
+#       - "GX Plugin"
+#       - "ingestion smoke"
+#       - "lint"
+#       - "Metadata Ingestion"
+#       - "metadata model generate"
+#       - "Metadata Models Custom CI"
+#       - "metadata-io"
+#       - "Nightly Docker Test"
+#       - "OAuth Smoke Test"
+#       - "PR Title Check"
+#       - "Prefect Plugin"
+#       - "Publish Datahub Java Jars (Client, Spark Lineage, Protobuf, Auth API)"
+#       - "Python Build"
+#       - "Python Tests for github scripts"
+#       - "Quickstart Test"
+#       - "Release Tests"
+#       - "Release Validation"
+#       - "spark smoke test"
+#       - "Vercel Preview Cleanup"
+#       - "Verify Quickstart Compose"
+#     types:
+#       - completed
+# 
+#   # Allows manual triggering for ad-hoc testing against any existing workflow run.
+#   # publish defaults to false so artifacts are not forwarded to downstream by accident.
+#   workflow_dispatch:
+#     inputs:
+#       run_id:
+#         description: "Workflow run ID to collect metrics for"
+#         required: true
+#         type: string
+#       attempt:
+#         description: "Run attempt number"
+#         required: false
+#         type: string
+#         default: "1"
+#       publish:
+#         description: "Publish metrics artifacts downstream"
+#         required: false
+#         type: boolean
+#         default: false
+#       notify_slack:
+#         description: "Send Slack failure notification (for testing; production
+#           notifications fire automatically)"
+#         required: false
+#         type: boolean
+#         default: false
+# 
 permissions:
   actions: read
   contents: read

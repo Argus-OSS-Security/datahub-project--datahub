@@ -2,25 +2,26 @@ name: Release Process - Cut Branch
 
 run-name: "Cut ${{ inputs.branch_type }} branch · v${{ inputs.version }}"
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch_type:
-        description: "'release' creates releases/v{version} from the default branch. 'hotfix' creates hotfixes/v{version} from releases/v{version}."
-        required: true
-        type: choice
-        options:
-          - release
-          - hotfix
-      version:
-        description: "Version without 'v' prefix (e.g. 1.0.0)"
-        required: true
-      sha:
-        description: "Full 40-character commit SHA to cut from. Leave empty to use the tip of the source branch."
-        required: false
-        type: string
-        default: ""
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch_type:
+#         description: "'release' creates releases/v{version} from the default branch. 'hotfix' creates hotfixes/v{version} from releases/v{version}."
+#         required: true
+#         type: choice
+#         options:
+#           - release
+#           - hotfix
+#       version:
+#         description: "Version without 'v' prefix (e.g. 1.0.0)"
+#         required: true
+#       sha:
+#         description: "Full 40-character commit SHA to cut from. Leave empty to use the tip of the source branch."
+#         required: false
+#         type: string
+#         default: ""
+# 
 permissions: {}
 
 concurrency:

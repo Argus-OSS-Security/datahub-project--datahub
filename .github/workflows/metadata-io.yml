@@ -1,30 +1,31 @@
 name: metadata-io
-on:
-  push:
-    branches:
-      - master
-      - releases/**
-    paths:
-      - "**/*.gradle"
-      - "li-utils/**"
-      - "metadata-models/**"
-      - "metadata-io/**"
-      - "metadata-service/configuration/**"
-      - ".github/workflows/metadata-io.yml"
-  pull_request:
-    branches:
-      - "**"
-    paths:
-      - "**/*.gradle"
-      - "li-utils/**"
-      - "metadata-models/**"
-      - "metadata-io/**"
-      - "metadata-service/configuration/**"
-      - ".github/workflows/metadata-io.yml"
-  release:
-    types: [published]
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#       - releases/**
+#     paths:
+#       - "**/*.gradle"
+#       - "li-utils/**"
+#       - "metadata-models/**"
+#       - "metadata-io/**"
+#       - "metadata-service/configuration/**"
+#       - ".github/workflows/metadata-io.yml"
+#   pull_request:
+#     branches:
+#       - "**"
+#     paths:
+#       - "**/*.gradle"
+#       - "li-utils/**"
+#       - "metadata-models/**"
+#       - "metadata-io/**"
+#       - "metadata-service/configuration/**"
+#       - ".github/workflows/metadata-io.yml"
+#   release:
+#     types: [published]
+#   workflow_dispatch:
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true

@@ -22,17 +22,18 @@
 # was evicted) it rebuilds the environments and saves one copy. Keys and cache
 # paths must stay byte-identical to the restore steps in the consuming workflows.
 name: CI Cache Warmup
-on:
-  push:
-    branches:
-      - master
-      - "releases/**"
-      - "hotfixes/**"
-  workflow_dispatch:
-
-# Keyed on the ref: this workflow only runs on pushes and manual dispatches, so
-# the previous group (PR number, else run id) was unique per run and never
-# cancelled a superseded warmup.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#       - "releases/**"
+#       - "hotfixes/**"
+#   workflow_dispatch:
+# 
+# # Keyed on the ref: this workflow only runs on pushes and manual dispatches, so
+# # the previous group (PR number, else run id) was unique per run and never
+# # cancelled a superseded warmup.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

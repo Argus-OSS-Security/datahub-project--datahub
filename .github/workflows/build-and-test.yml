@@ -1,37 +1,38 @@
 name: build & test
-on:
-  push:
-    branches:
-      - master
-      - releases/**
-      - hotfixes/**
-    paths:
-      - "**"
-      - "!docs/**"
-      - "!**.md"
-      - "!.github/**"
-      - ".github/workflows/build-and-test.yml"
-      - ".github/actions/ensure-codegen-updated"
-      - ".github/actions/configure-fast-apt-mirror"
-      - ".github/scripts/send_failed_tests_to_posthog.py"
-  pull_request:
-    branches:
-      - "**"
-    paths:
-      - "**"
-      - "!docs/**"
-      - "!**.md"
-      - "!.github/**"
-      - ".github/workflows/build-and-test.yml"
-      - ".github/actions/ensure-codegen-updated"
-      - ".github/actions/configure-fast-apt-mirror"
-      - ".github/scripts/send_failed_tests_to_posthog.py"
-  workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *" # Run at midnight UTC every day
-  release:
-    types: [published]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#       - releases/**
+#       - hotfixes/**
+#     paths:
+#       - "**"
+#       - "!docs/**"
+#       - "!**.md"
+#       - "!.github/**"
+#       - ".github/workflows/build-and-test.yml"
+#       - ".github/actions/ensure-codegen-updated"
+#       - ".github/actions/configure-fast-apt-mirror"
+#       - ".github/scripts/send_failed_tests_to_posthog.py"
+#   pull_request:
+#     branches:
+#       - "**"
+#     paths:
+#       - "**"
+#       - "!docs/**"
+#       - "!**.md"
+#       - "!.github/**"
+#       - ".github/workflows/build-and-test.yml"
+#       - ".github/actions/ensure-codegen-updated"
+#       - ".github/actions/configure-fast-apt-mirror"
+#       - ".github/scripts/send_failed_tests_to_posthog.py"
+#   workflow_dispatch:
+#   schedule:
+#     - cron: "0 0 * * *" # Run at midnight UTC every day
+#   release:
+#     types: [published]
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true

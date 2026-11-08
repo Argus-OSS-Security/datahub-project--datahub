@@ -2,34 +2,35 @@ name: Rollback Compatibility Analysis
 
 run-name: "Rollback analysis: ${{ inputs.current }} → ${{ inputs.target || 'last release' }}"
 
-on:
-  workflow_dispatch:
-    inputs:
-      current:
-        description: "Current build (N) — tag, branch, or SHA"
-        required: true
-      target:
-        description: "Target build (N-1) — tag, branch, or SHA. Leave blank to auto-resolve the latest stable release tag (v*-cloud in acryl-fork, v* in OSS)."
-        required: false
-        default: ""
-      json:
-        description: "Also emit JSON report"
-        type: boolean
-        default: false
-  workflow_call:
-    inputs:
-      current:
-        type: string
-        required: true
-      target:
-        type: string
-        required: false
-        default: ""
-      json:
-        type: boolean
-        required: false
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       current:
+#         description: "Current build (N) — tag, branch, or SHA"
+#         required: true
+#       target:
+#         description: "Target build (N-1) — tag, branch, or SHA. Leave blank to auto-resolve the latest stable release tag (v*-cloud in acryl-fork, v* in OSS)."
+#         required: false
+#         default: ""
+#       json:
+#         description: "Also emit JSON report"
+#         type: boolean
+#         default: false
+#   workflow_call:
+#     inputs:
+#       current:
+#         type: string
+#         required: true
+#       target:
+#         type: string
+#         required: false
+#         default: ""
+#       json:
+#         type: boolean
+#         required: false
+#         default: false
+# 
 permissions:
   contents: read
 

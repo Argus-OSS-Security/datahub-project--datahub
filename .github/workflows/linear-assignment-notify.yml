@@ -7,11 +7,12 @@ name: Notify PR Author of Linear Assignment
 # Designed to fail silently — errors are logged but never propagate.
 # continue-on-error: true ensures this job never blocks other workflows.
 
-on:
-  schedule:
-    - cron: "*/15 * * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "*/15 * * * *"
+#   workflow_dispatch:
+# 
 jobs:
   notify:
     runs-on: ubuntu-24.04

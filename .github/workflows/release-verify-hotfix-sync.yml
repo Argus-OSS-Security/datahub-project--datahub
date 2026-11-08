@@ -1,19 +1,20 @@
 name: Release Process - Verify Hotfix Sync
 
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Release version without 'v' prefix (e.g. 1.0.0)"
-        required: true
-        type: string
-  workflow_call:
-    inputs:
-      version:
-        description: "Release version without 'v' prefix (e.g. 1.0.0)"
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: "Release version without 'v' prefix (e.g. 1.0.0)"
+#         required: true
+#         type: string
+#   workflow_call:
+#     inputs:
+#       version:
+#         description: "Release version without 'v' prefix (e.g. 1.0.0)"
+#         required: true
+#         type: string
+# 
 permissions: {}
 
 jobs:

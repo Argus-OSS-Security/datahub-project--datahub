@@ -1,76 +1,77 @@
 name: Reusable - Playwright E2E Test
 run-name: Playwright Test Matrix ${{ inputs.shard }} / ${{ inputs.shard_count }}
 
-on:
-  workflow_call:
-    inputs:
-      shard:
-        description: "Current shard number"
-        required: true
-        type: string
-      shard_count:
-        description: "Total number of shards"
-        required: true
-        type: string
-      test_runner_type:
-        description: "Runner type (e.g. depot-ubuntu-24.04-4 or ubuntu-24.04)"
-        required: true
-        type: string
-      depot_build_id:
-        description: "Depot build ID to pull images from. Ignored on workflow_dispatch (images are pulled from registry instead). On other events: when set images are pulled from depot; when empty images are built locally."
-        required: false
-        type: string
-        default: ""
-      image_build_task:
-        description: "Gradle task used to build images locally (used when depot_build_id is empty and docker_login is true)"
-        required: false
-        type: string
-        default: ":docker:buildImagesQuickstartConsumers"
-      profile_name:
-        description: "Docker Compose profile name passed to run-quickstart.sh. Should match image_build_task"
-        required: false
-        type: string
-        default: "quickstart-consumers"
-      local_build_flags:
-        description: "Extra Gradle flags appended to the local image build command (e.g. -PpythonDockerVersion=... -PdockerRegistry=...)"
-        required: false
-        type: string
-        default: ""
-      datahub_version:
-        description: "DATAHUB_VERSION passed to run-quickstart.sh (defaults to 'quickstart'). Also used to tag locally built images"
-        required: false
-        type: string
-        default: "quickstart"
-      datahub_repo:
-        description: "DATAHUB_REPO passed to run-quickstart.sh (leave empty to use the script default)"
-        required: false
-        type: string
-        default: ${{ vars.DOCKER_REGISTRY }}
-      image_version_env:
-        description: "KEY=VALUE lines of per-service image tag overrides (e.g. DATAHUB_GMS_VERSION=quickstart) for images the caller reused instead of rebuilding. Empty when every image was built for this run."
-        required: false
-        type: string
-        default: ""
-      docker_login:
-        description: "Whether DockerHub credentials are available (callers compute this from their secrets; the secrets context is not usable in step-level if)."
-        required: false
-        type: string
-        default: "true"
-      image_built_repos:
-        description: "Space-separated docker repos the caller built for this run. run-quickstart.sh fails if any resolves to a reused tag instead of datahub_version."
-        required: false
-        type: string
-        default: ""
-      send_posthog_metrics:
-        description: "Whether to send test failure metrics to PostHog. Should only be true for scheduled/push runs, not workflow_dispatch."
-        required: false
-        type: boolean
-        default: false
-      workers_per_shard:
-        description: "Number of Playwright workers per shard. Defaults to 1; values above 1 share the shard's stack and filesystem."
-        required: false
-        type: string
-        default: "1"
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       shard:
+#         description: "Current shard number"
+#         required: true
+#         type: string
+#       shard_count:
+#         description: "Total number of shards"
+#         required: true
+#         type: string
+#       test_runner_type:
+#         description: "Runner type (e.g. depot-ubuntu-24.04-4 or ubuntu-24.04)"
+#         required: true
+#         type: string
+#       depot_build_id:
+#         description: "Depot build ID to pull images from. Ignored on workflow_dispatch (images are pulled from registry instead). On other events: when set images are pulled from depot; when empty images are built locally."
+#         required: false
+#         type: string
+#         default: ""
+#       image_build_task:
+#         description: "Gradle task used to build images locally (used when depot_build_id is empty and docker_login is true)"
+#         required: false
+#         type: string
+#         default: ":docker:buildImagesQuickstartConsumers"
+#       profile_name:
+#         description: "Docker Compose profile name passed to run-quickstart.sh. Should match image_build_task"
+#         required: false
+#         type: string
+#         default: "quickstart-consumers"
+#       local_build_flags:
+#         description: "Extra Gradle flags appended to the local image build command (e.g. -PpythonDockerVersion=... -PdockerRegistry=...)"
+#         required: false
+#         type: string
+#         default: ""
+#       datahub_version:
+#         description: "DATAHUB_VERSION passed to run-quickstart.sh (defaults to 'quickstart'). Also used to tag locally built images"
+#         required: false
+#         type: string
+#         default: "quickstart"
+#       datahub_repo:
+#         description: "DATAHUB_REPO passed to run-quickstart.sh (leave empty to use the script default)"
+#         required: false
+#         type: string
+#         default: ${{ vars.DOCKER_REGISTRY }}
+#       image_version_env:
+#         description: "KEY=VALUE lines of per-service image tag overrides (e.g. DATAHUB_GMS_VERSION=quickstart) for images the caller reused instead of rebuilding. Empty when every image was built for this run."
+#         required: false
+#         type: string
+#         default: ""
+#       docker_login:
+#         description: "Whether DockerHub credentials are available (callers compute this from their secrets; the secrets context is not usable in step-level if)."
+#         required: false
+#         type: string
+#         default: "true"
+#       image_built_repos:
+#         description: "Space-separated docker repos the caller built for this run. run-quickstart.sh fails if any resolves to a reused tag instead of datahub_version."
+#         required: false
+#         type: string
+#         default: ""
+#       send_posthog_metrics:
+#         description: "Whether to send test failure metrics to PostHog. Should only be true for scheduled/push runs, not workflow_dispatch."
+#         required: false
+#         type: boolean
+#         default: false
+#       workers_per_shard:
+#         description: "Number of Playwright workers per shard. Defaults to 1; values above 1 share the shard's stack and filesystem."
+#         required: false
+#         type: string
+#         default: "1"
 jobs:
   playwright_test:
     name: Playwright E2E Tests

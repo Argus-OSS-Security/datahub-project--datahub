@@ -1,21 +1,22 @@
 name: Nightly Docker Test
 # This workflow tests against the latest head/master Docker images from DockerHub
 # and if tests pass, tags them as nightly and daily for publishing
-on:
-  workflow_dispatch:
-    inputs:
-      force_full_run:
-        description: >
-          Bypass retry optimizations (re-run skip / failed-module filtering) and
-          always pull images, run quickstart, and execute the full smoke suite.
-          Use this when validating a branch change or when a prior attempt failed
-          before writing useful JUnit results (e.g. collection errors).
-        required: false
-        default: false
-        type: boolean
-  schedule:
-    - cron: "0 8 * * *" # Run at midnight Pacific time (8 AM UTC) every day
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       force_full_run:
+#         description: >
+#           Bypass retry optimizations (re-run skip / failed-module filtering) and
+#           always pull images, run quickstart, and execute the full smoke suite.
+#           Use this when validating a branch change or when a prior attempt failed
+#           before writing useful JUnit results (e.g. collection errors).
+#         required: false
+#         default: false
+#         type: boolean
+#   schedule:
+#     - cron: "0 8 * * *" # Run at midnight Pacific time (8 AM UTC) every day
+# 
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true

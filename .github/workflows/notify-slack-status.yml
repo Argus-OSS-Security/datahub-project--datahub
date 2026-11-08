@@ -1,66 +1,67 @@
 name: Notify Slack Workflow Status
 
-on:
-  workflow_call:
-    inputs:
-      run_id:
-        type: string
-        required: false
-        default: ""
-        description: >-
-          Run ID to fetch details for via the GitHub API. Leave empty to use
-          event/run context instead.
-      attempt:
-        type: string
-        required: false
-        default: "1"
-        description: Run attempt number to fetch job details for.
-      conclusion:
-        type: string
-        required: false
-        default: ""
-        description: >-
-          Workflow conclusion (success, failure, timed_out, cancelled). When
-          run_id is provided and this is empty, fetched from the API.
-      channel:
-        type: string
-        required: false
-        default: "#datahub-oss-build-notifications"
-        description: Slack channel to post to
-      thread_ts_file:
-        type: string
-        required: false
-        default: ""
-        description: >-
-          Workspace-relative path to a JSON file storing {channel: thread_ts}
-          for threaded notifications. Omit to always post a standalone message.
-
-  # Allows standalone testing from the Actions UI.
-  workflow_dispatch:
-    inputs:
-      run_id:
-        type: string
-        required: true
-        description: Run ID to fetch details for (leave empty to use current run context)
-      attempt:
-        type: string
-        required: false
-        default: "1"
-        description: Run attempt number to fetch job details for.
-      conclusion:
-        type: string
-        required: false
-        description: "Workflow conclusion: success, failure, timed_out, cancelled"
-      channel:
-        type: string
-        required: false
-        default: "#datahub-build-notifications"
-        description: Slack channel to post to
-      thread_ts_file:
-        type: string
-        required: false
-        description: Workspace-relative path to thread-ts JSON file
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       run_id:
+#         type: string
+#         required: false
+#         default: ""
+#         description: >-
+#           Run ID to fetch details for via the GitHub API. Leave empty to use
+#           event/run context instead.
+#       attempt:
+#         type: string
+#         required: false
+#         default: "1"
+#         description: Run attempt number to fetch job details for.
+#       conclusion:
+#         type: string
+#         required: false
+#         default: ""
+#         description: >-
+#           Workflow conclusion (success, failure, timed_out, cancelled). When
+#           run_id is provided and this is empty, fetched from the API.
+#       channel:
+#         type: string
+#         required: false
+#         default: "#datahub-oss-build-notifications"
+#         description: Slack channel to post to
+#       thread_ts_file:
+#         type: string
+#         required: false
+#         default: ""
+#         description: >-
+#           Workspace-relative path to a JSON file storing {channel: thread_ts}
+#           for threaded notifications. Omit to always post a standalone message.
+# 
+#   # Allows standalone testing from the Actions UI.
+#   workflow_dispatch:
+#     inputs:
+#       run_id:
+#         type: string
+#         required: true
+#         description: Run ID to fetch details for (leave empty to use current run context)
+#       attempt:
+#         type: string
+#         required: false
+#         default: "1"
+#         description: Run attempt number to fetch job details for.
+#       conclusion:
+#         type: string
+#         required: false
+#         description: "Workflow conclusion: success, failure, timed_out, cancelled"
+#       channel:
+#         type: string
+#         required: false
+#         default: "#datahub-build-notifications"
+#         description: Slack channel to post to
+#       thread_ts_file:
+#         type: string
+#         required: false
+#         description: Workspace-relative path to thread-ts JSON file
+# 
 jobs:
   notify:
     runs-on: ubuntu-22.04

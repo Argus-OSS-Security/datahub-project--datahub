@@ -1,20 +1,21 @@
 name: Check Datahub Jars
 
-on:
-  push:
-    branches:
-      - master
-      - releases/**
-    paths:
-      - "metadata-integration/**"
-  pull_request:
-    branches:
-      - "**"
-    paths:
-      - "metadata-integration/**"
-  release:
-    types: [published]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#       - releases/**
+#     paths:
+#       - "metadata-integration/**"
+#   pull_request:
+#     branches:
+#       - "**"
+#     paths:
+#       - "metadata-integration/**"
+#   release:
+#     types: [published]
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
